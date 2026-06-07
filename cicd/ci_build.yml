@@ -3,7 +3,7 @@ parameters:
   type: string
 - name: ResourceGroup
   type: string
-- name: SubscriptionId:
+- name: SubscriptionId
   type: string
 
 steps:
