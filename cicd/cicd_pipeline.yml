@@ -10,7 +10,7 @@ stages:
 
 
   variables: 
-  - group: groupdev
+  - group: devgroup
 
   jobs:
   - job: BuildARM
