@@ -9,7 +9,7 @@ stages:
   displayName: "Build ARM Template"
 
 
-- variables: 
+  variables: 
   group: groupdev
 
   jobs:
