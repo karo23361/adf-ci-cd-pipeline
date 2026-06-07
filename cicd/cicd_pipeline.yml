@@ -14,10 +14,10 @@ stages:
 
   jobs:
   - job: BuildARM
-  displayName: "Build ARM"
-  steps:
-  - template: ci_build.yml
-    parameters:
-      DataFactory: $(DataFactory)
-      ResourceGroup: $(ResourceGroup)
-      SubscriptionId: $(SubscriptionId)
+    displayName: "Build ARM"
+    steps:
+    - template: ci_build.yml
+      parameters:
+        DataFactory: $(DataFactory)
+        ResourceGroup: $(ResourceGroup)
+        SubscriptionId: $(SubscriptionId)
