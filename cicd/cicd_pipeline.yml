@@ -1,0 +1,23 @@
+trigger:
+- mainn
+
+pool:
+  vmImage: "ubuntu-latest"
+
+stages:
+- stage: BuildARMTemplate
+  displayName: "Build ARM Template"
+
+
+- variables: 
+  group: groupdev
+
+  jobs:
+  - job: BuildARM
+  displayName: "Build ARM"
+  steps:
+  - template: ci_build.yml
+    parameters:
+      DataFactory: $(DataFactory)
+      ResourceGroup: $(ResourceGroup)
+      SubscriptionId: $(SubscriptionId)
