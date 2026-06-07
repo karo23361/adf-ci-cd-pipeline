@@ -19,3 +19,24 @@ steps:
     workingDir: '$(Build.Repository.LocalPath)' #replace with the package.json folder
     verbose: true
   displayName: 'Install npm package'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: '$(Build.Repository.LocalPath)' #replace with the package.json folder
+    customCommand: 'run build validate $(Build.Repository.LocalPath)/ /subscriptions/$(SubscriptionId)/resourceGroups/$(ResourceGroup)/providers/Microsoft.DataFactory/factories/$(DataFactory)'
+  displayName: 'Validate'
+
+- task: Npm@1
+  inputs:
+    command: 'custom'
+    workingDir: '$(Build.Repository.LocalPath)' 
+    customCommand: 'run build export $(Build.Repository.LocalPath)/ /subscriptions/$(SubscriptionId)/resourceGroups/$(ResourceGroup)/providers/Microsoft.DataFactory/factories/$(DataFactory) "ArmTemplate"'
+  displayName: 'Validate and Generate ARM template'
+
+#Publish the Artifacts
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.Repository.LocalPath)/ArmTemplate' #replace with the package.json folder
+    artifact: 'ArmTemplates'
+    publishLocation: 'pipeline'
