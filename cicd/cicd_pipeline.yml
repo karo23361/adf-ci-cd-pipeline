@@ -65,3 +65,31 @@ stages:
         SubscriptionId: $(SubscriptionId)
         ResourceGroup: $(ResourceGroup)
         Environment: qa
+
+# DEPLOY TO PD (Production) With Approval Gate
+- stage: DeployToQA
+  dependsOn: BuildARMTemplate
+  condition: succeeded()
+  displayName: "Deploy To Production"
+
+  variables:
+  - group: pdgroup
+
+  jobs:
+  - deployment: DeployToPD
+    displayName: "Deploy To Production"
+    environment: 'pd' # This links to the Environment in Pipelines > En
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+          - template: cd_deploy.yml
+            parameters:
+              AzureResourceManagerConnection: adf-azure-service-connection
+              DataFactory: $(DataFactory)
+              SubscriptionId: $(SubscriptionId)
+              ResourceGroup: $(ResourceGroup)
+              Environment: pd
+
+
