@@ -68,7 +68,7 @@ stages:
 
 # DEPLOY TO PD (Production) With Approval Gate
 - stage: DeployToProd
-  dependsOn: BuildARMTemplate
+  dependsOn: DeployToQA
   condition: succeeded()
   displayName: "Deploy To Production"
 
