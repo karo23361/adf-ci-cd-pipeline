@@ -15,7 +15,7 @@ steps:
   displayName: "Download The ADF Artifact"
   inputs:
     buildType: "current"
-    artifactName: "ARMTemplate"
+    artifactName: "ARMTemplates"
     targetpath: "$(Pipeline.Workspace)/ARMTemplate"
 
 - task: AzurePowerShell@5
