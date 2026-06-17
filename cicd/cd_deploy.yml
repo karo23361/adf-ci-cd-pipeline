@@ -7,6 +7,8 @@ parameters:
   type: string
 - name: SubscriptionID
   type: string
+- name: Environment
+  type: string
 
 steps:
 
@@ -28,7 +30,7 @@ steps:
     ScriptPath: "$(Pipeline.Workspace)/ARMTemplate/PrePostDeploymentScript.ps1"
     scriptArguments:
       -ArmTemplate "$(Pipeline.Workspace)/ARMTemplate/ARMTemplateForFactory.json"
-      -ArmTemplateParameters $(Build.Repository.LocalPath)/cicd/ARMParams/qa.json
+      -ArmTemplateParameters $(Build.Repository.LocalPath)/cicd/ARMParams/${{ parameters.Environment }}.json
       -ResourceGroupName ${{ parameters.ResourceGroup }}
       -DataFactoryName ${{ parameters.DataFactory }}
       -predeployment $true
@@ -45,7 +47,7 @@ steps:
     location: 'canadacentral'
     templateLocation: 'Linked artifact'
     csmFile: '$(Pipeline.Workspace)/ARMTemplate/ARMTemplateForFactory.json'
-    csmParametersFile: '$(Build.Repository.LocalPath)/cicd/ARMParams/qa.json'
+    csmParametersFile: '$(Build.Repository.LocalPath)/cicd/ARMParams/${{ parameters.Environment }}.json'
     deploymentMode: 'Incremental'
 
 - task: AzurePowerShell@5
@@ -58,7 +60,7 @@ steps:
     ScriptPath: "$(Pipeline.Workspace)/ARMTemplate/PrePostDeploymentScript.ps1"
     scriptArguments:
       -ArmTemplate "$(Pipeline.Workspace)/ARMTemplate/ARMTemplateForFactory.json"
-      -ArmTemplateParameters $(Build.Repository.LocalPath)/cicd/ARMParams/qa.json
+      -ArmTemplateParameters $(Build.Repository.LocalPath)/cicd/ARMParams/${{ parameters.Environment }}.json
       -ResourceGroupName ${{ parameters.ResourceGroup }}
       -DataFactoryName ${{ parameters.DataFactory }}
       -predeployment $false
