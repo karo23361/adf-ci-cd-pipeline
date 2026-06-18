@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
-			"url": "https://storagekaroldev.dfs.core.windows.net/"
+			"url": "https://storageaccountsample.dfs.core.windows.net/"
 		}
 	}
 }
