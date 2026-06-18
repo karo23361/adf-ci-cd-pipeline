@@ -3,16 +3,16 @@
 	"contentVersion": "1.0.0.0",
 	"parameters": {
 		"factoryName": {
-			"value": "adfkarolqa"
+			"value": "adfqasample"
 		},
 		"ls_adls_properties_typeProperties_url": {
-			"value": "https://storagekarolqa.dfs.core.windows.net/"
+			"value": "https://storageqasample.dfs.core.windows.net/"
 		},
 		"ls_http_properties_typeProperties_url": {
 			"value": "https://raw.githubusercontent.com/"
 		},
 		"ls_keyvault_properties_typeProperties_baseUrl": {
-			"value": "https://keyvaultkaro.vault.azure.net/"
+			"value": "https://keyvaultsample.vault.azure.net/"
 		}
 	}
 }
