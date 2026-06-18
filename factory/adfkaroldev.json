@@ -9,7 +9,7 @@
 	"location": "polandcentral",
 	"identity": {
 		"type": "SystemAssigned",
-		"principalId": "7abfef1f-2ce6-44dd-92eb-c4f5ed55628a",
-		"tenantId": "25db6e56-377a-451a-8ad6-674ca1adc623"
+		"principalId": "123-123-123",
+		"tenantId": "123-123-123"
 	}
 }
